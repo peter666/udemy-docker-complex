@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t peter6z32/docker-complex-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run peter6z32/docker-complex-test npm test -- --coverage
+
+after_success:
+  - docker build -t peter6z32/docker-complex-client ./client
+  - docker build -t peter6z32/docker-complex-nginx ./nginx
+  - docker build -t peter6z32/docker-complex-server ./server
+  - docker build -t peter6z32/docker-complex-worker ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take thos images and push them, to docker hub
+  - docker push peter6z32/docker-complex-client
+  - docker push peter6z32/docker-complex-nginx
+  - docker push peter6z32/docker-complex-server
+  - docker push peter6z32/docker-complex-worker
