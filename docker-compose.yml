@@ -41,7 +41,7 @@ services:
       - ./client:/app
   worker:
     environment:
-      - REDIS_HOST:redis
+      - REDIS_HOST=redis
       - REDIS_PORT=6379
     build:
       dockerfile: Dockerfile.dev
