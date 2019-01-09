@@ -1,0 +1,43 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "peter6z32/docker-complex-client",
+      "hostname": "client",
+      "essential": false
+      
+    },
+    {
+      "name": "server",
+      "image": "peter6z32/docker-complex-server",
+      "hostname": "api",
+      "essential": false
+    },
+    {
+      "name": "worker",
+      "image": "peter6z32/docker-complex-worker",
+      "hostname": "worker",
+      "essential": false
+    },
+    {
+      "name": "nginx",
+      "image": "peter6z32/docker-complex-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+        "client","server"
+      ]
+    }
+  ]
+  
+  
+
+
+}
