@@ -25,7 +25,7 @@ deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
   app: "docker-complex"
-  environment: "DockerComplex-env"
+  env: "DockerComplex-env"
   bucket_name: "elasticbeanstalk-us-east-2-301423999429"
   bucket_path: "docker-complex"
   on:
