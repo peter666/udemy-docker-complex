@@ -7,7 +7,6 @@
       "hostname": "client",
       "essential": false,
       "memory": 128
-      
     },
     {
       "name": "server",
@@ -40,8 +39,4 @@
       "memory": 128
     }
   ]
-  
-  
-
-
 }
